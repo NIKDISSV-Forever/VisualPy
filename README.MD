@@ -10,6 +10,7 @@ Works with both _CPython_ and _PyPy_.
 
 > python -m VPython
 
+> General
 ![](screenshots/main.png)
 ![](screenshots/many_options.png)
 
