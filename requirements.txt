@@ -1,0 +1,4 @@
+pygments
+rich
+pyperclip
+readchar; platform_system != "Windows"
