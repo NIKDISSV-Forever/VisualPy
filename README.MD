@@ -1,5 +1,7 @@
 Interactive console with syntax highlighting and tooltips.
 
+Works with both _CPython_ and _PyPy_.
+
 # Installing
 
 > pip install VPython -U
@@ -11,6 +13,9 @@ Interactive console with syntax highlighting and tooltips.
 ![](screenshots/main.png)
 ![](screenshots/many_options.png)
 
+> CPython
+![](screenshots/CPython.png)
+
 > Imports
 ![](screenshots/import_hints.png)
 ![](screenshots/import.png)
@@ -20,8 +25,8 @@ Interactive console with syntax highlighting and tooltips.
 > Light Theme (-dbg --darkbg flag)
 ![](screenshots/light_theme.png)
 
-
 # Arguments
+
 ```
 usage: VPython [-h] [-dbg]
                [-lex {PythonLexer,PythonConsoleLexer,PythonTracebackLexer,Python2Lexer,Python2TracebackLexer,CythonLexer,DgLexer,NumPyLexer}]
