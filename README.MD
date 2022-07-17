@@ -11,20 +11,20 @@ Works with both _CPython_ and _PyPy_.
 > python -m VPython
 
 > General
-![](screenshots/main.png)
-![](screenshots/many_options.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/main.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/many_options.png)
 
 > CPython
-![](screenshots/CPython.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/CPython.png)
 
 > Imports
-![](screenshots/import_hints.png)
-![](screenshots/import.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/import_hints.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/import.png)
 
 > Dark Theme (Default)
-![](screenshots/dark_theme.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/dark_theme.png)
 > Light Theme (-dbg --darkbg flag)
-![](screenshots/light_theme.png)
+![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/light_theme.png)
 
 # Arguments
 
