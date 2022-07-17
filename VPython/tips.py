@@ -16,8 +16,8 @@ from typing import Iterable, Literal
 
 import rich
 
-from vpy.VPython import interactive
-from vpy.VPython import highlights
+from VPython import highlights
+from VPython import interactive
 
 punctuation_space = re.sub(r'[._]', '', string.punctuation) + ' '
 punctuations = re.compile(r'[{0}]'.format('\\'.join(punctuation_space)))

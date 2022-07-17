@@ -12,9 +12,9 @@ from typing import Any, Type
 import pyperclip
 import rich
 
-import vpy.VPython.auto_complete
-import vpy.VPython.highlights
-import vpy.VPython.tips
+import VPython.auto_complete
+import VPython.highlights
+import VPython.tips
 
 try:
     from msvcrt import getwch as _get_char
@@ -38,7 +38,7 @@ def clear_console():
 
 
 def write_traceback(data: str):
-    sys.stderr.write(vpy.VPython.highlights.highlight(data, vpy.VPython.highlights.TRACEBACK_LEXER))
+    sys.stderr.write(VPython.highlights.highlight(data, VPython.highlights.TRACEBACK_LEXER))
 
 
 def vpython_excepthook(exc_type: Type[BaseException], value: BaseException, tb: TracebackType):
@@ -158,7 +158,7 @@ class VisualPython(code.InteractiveConsole):
             else:
                 if executed is not None:
                     self.last_executed = executed
-                    print(vpy.VPython.highlights.highlight(repr(executed)))
+                    print(VPython.highlights.highlight(repr(executed)))
             return False
 
         try:
@@ -188,7 +188,7 @@ class VisualPython(code.InteractiveConsole):
         if prompt == sys.ps2 and self.LINES_HISTORY:
             last_line = ''.join(self.LINES_HISTORY[-1])
             if len(last_line) > 1:
-                found = vpy.VPython.auto_complete.SPACES.findall(last_line)
+                found = VPython.auto_complete.SPACES.findall(last_line)
                 if last_line.strip('\0 '):
                     line.extend(found[0] if found else '    ')
         line.append('\0')
@@ -266,7 +266,7 @@ class VisualPython(code.InteractiveConsole):
 
             elif ch == '\t':  # Auto Complete And Tips
                 deployed = False
-                for stmt, deploy in vpy.VPython.auto_complete.STATEMENTS.items():
+                for stmt, deploy in VPython.auto_complete.STATEMENTS.items():
                     find_at = slice(cursor_pos - len(stmt), cursor_pos)
                     if ''.join(line[find_at]) == stmt:
                         if '\0' in deploy:
@@ -287,7 +287,7 @@ class VisualPython(code.InteractiveConsole):
                     line[:cursor_pos] = array.array('u', to_cursor)
                     cursor_pos = len(to_cursor)
 
-                for tiper in vpy.VPython.tips.TIPS:
+                for tiper in VPython.tips.TIPS:
                     checks = tiper(to_cursor).check()
                     if checks is not None:
                         if not checks:
@@ -297,7 +297,7 @@ class VisualPython(code.InteractiveConsole):
                         break
                 continue
 
-            elif ch in vpy.VPython.auto_complete.QUOTES:
+            elif ch in VPython.auto_complete.QUOTES:
                 if quoted == 3:
                     quoted = 1
                     self._auto_char.extend('\xe0K')
@@ -307,8 +307,8 @@ class VisualPython(code.InteractiveConsole):
                     quoted += 1
             elif ch in '\r\n':
                 break
-            if ch in vpy.VPython.auto_complete.BRACKETS:
-                self._auto_char.extend(vpy.VPython.auto_complete.BRACKETS[ch])
+            if ch in VPython.auto_complete.BRACKETS:
+                self._auto_char.extend(VPython.auto_complete.BRACKETS[ch])
             line.insert(cursor_pos, ch)
         if line in self.LINES_HISTORY:
             self.LINES_HISTORY.remove(line)
@@ -319,7 +319,7 @@ class VisualPython(code.InteractiveConsole):
     @staticmethod
     def terminal_just(prompt: str, line: str, cursor: str = None) -> str:
         if cursor is None:
-            cursor = vpy.VPython.highlights.CURSOR
+            cursor = VPython.highlights.CURSOR
         tw = shutil.get_terminal_size()[0] - 1 - len(prompt) - (line.count('\t') * 4)
         parts = [line[i:i + tw] for i in range(0, len(line), tw - 1)]
         part_with_cursor = parts[-1]
@@ -333,7 +333,7 @@ class VisualPython(code.InteractiveConsole):
                         break
         if len(parts) > 1 and len(prompt) > 1:
             prompt = prompt[:-1] + '…'
-        return prompt + vpy.VPython.highlights.highlight(part_with_cursor.ljust(tw)).replace('\0', cursor)
+        return prompt + VPython.highlights.highlight(part_with_cursor.ljust(tw)).replace('\0', cursor)
 
     def getch(self) -> str:
         return self._auto_char.pop(0) if self._auto_char else get_char()

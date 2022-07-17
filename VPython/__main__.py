@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pygments.lexers.python as py_lexers
 
-import vpy.VPython.highlights
-from vpy.VPython.interactive import VisualPython
+import VPython.highlights
+from VPython.interactive import VisualPython
 
 ALL_LEXERS = py_lexers.__all__
 
@@ -31,12 +31,12 @@ def main():
 
     args = arg_parser.parse_args()
 
-    vpy.VPython.highlights.FORMATTER.darkbg = args.darkbg
-    vpy.VPython.highlights.LEXER = getattr(py_lexers, args.lexer)()
-    vpy.VPython.highlights.TRACEBACK_LEXER = getattr(py_lexers, args.traceback_lexer)()
+    VPython.highlights.FORMATTER.darkbg = args.darkbg
+    VPython.highlights.LEXER = getattr(py_lexers, args.lexer)()
+    VPython.highlights.TRACEBACK_LEXER = getattr(py_lexers, args.traceback_lexer)()
 
     if args.cursor:
-        vpy.VPython.highlights.CURSOR = args.cursor
+        VPython.highlights.CURSOR = args.cursor
 
     builtins_dict = builtins.__dict__
     builtins_dict['__name__'] = '__name__'
