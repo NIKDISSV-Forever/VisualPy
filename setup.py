@@ -2,13 +2,12 @@ import setuptools
 
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
-
 with open('README.MD', encoding='UTF-8') as f:
     readme = f.read()
 
 setuptools.setup(
     name='VisualPy',
-    version='0.1.1',
+    version='0.1.2',
 
     description='Cross-platform python interpreter with highlighting, autocompletion and code hints '
                 '(Like IPython and BPython)',
@@ -45,5 +44,5 @@ setuptools.setup(
 
         'Typing :: Typed'
     ],
-    keywords=['ipython', 'bpython', 'vpython', 'highlight', 'interpreter', 'interactive', 'code', 'console']
+    keywords=['ipython', 'bpython', 'vpython', 'highlight', 'interpreter', 'interactive', 'code', 'console'],
 )

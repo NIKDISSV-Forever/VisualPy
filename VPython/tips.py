@@ -211,11 +211,11 @@ def _print_filtered(results: Iterable | None):
         return
     rich.print('\n'
                f'Display all {len(values)} possibilities? '
-               f'[i]start[:stop:step][/i] |'
+               f'[i]start[:stop:step][/] |'
 
-               f' [yellow][b]S[/b]horten[/yellow]'
-               f'/[red][b]n[/b]o[/red]'
-               f'/[green][b]y[/b]es[/green]',
+               f' [yellow][b]S[/]horten[/]'
+               f'/[red][b]n[/]o[/]'
+               f'/[green][b]y[/]es[/]',
                end=' ')
     choice = (input().strip().casefold() or 's')[0]
     if choice == 'y':

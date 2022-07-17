@@ -97,11 +97,11 @@ class VisualPython(code.InteractiveConsole):
                 self.__class__.__name__ += ' Python'
             name_len = len(self.__class__.__name__)
             rich.print(f'[i][blue]{self.__class__.__name__[:name_len // 2]}[/blue]'
-                       f'[yellow]{self.__class__.__name__[name_len // 2:]}[/yellow][/i] '
+                       f'[yellow]{self.__class__.__name__[name_len // 2:]}[/yellow][/] '
                        f'{sys.version} on {sys.platform}\n'
                        f'{copyright_}\n'
-                       '[white b on black]Tab[/white b on black] for hints, '
-                       '2x [white b on black]Esc[/white b on black] to clear screen.')
+                       '[white b on black]Tab[/] for hints, '
+                       '2x [white b on black]Esc[/] to clear screen.')
         elif banner:
             self.write(f'{banner}\n')
 
@@ -148,7 +148,7 @@ class VisualPython(code.InteractiveConsole):
                 exit_code = exit_error.code
                 if exit_code is not None:
                     color = 'red' if exit_code else 'green'
-                    rich.print(f'[i]Exit code: [b {color}]{exit_code}[/b {color}][/i]')
+                    rich.print(f'[i]Exit code: [b {color}]{exit_code}[/b {color}][/]')
                 raise
             except BaseException as err:
                 if isinstance(err, EOFError):
@@ -245,6 +245,7 @@ class VisualPython(code.InteractiveConsole):
                     offset = -1 if direction == 'H' else 1
                     history_ptr = (history_ptr + offset) % len(self.LINES_HISTORY)
                     line = self.LINES_HISTORY[history_ptr]
+                    continue
 
                 elif direction in 'sGtO':  # Ctrl + < >  |  Start End
                     line.pop(cursor_pos)
