@@ -4,7 +4,7 @@ Works with both _CPython_ and _PyPy_.
 
 # Installing
 
-> pip install VPython -U
+> pip install [VisualPython](https://pypi.org/project/VisualPython) -U
 
 # Usage
 

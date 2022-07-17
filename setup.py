@@ -7,7 +7,7 @@ with open('README.MD', encoding='UTF-8') as f:
     readme = f.read()
 
 setuptools.setup(
-    name='VPython',
+    name='VisualPython',
     version='0.1.0',
 
     description='Cross-platform python interpreter with highlighting, autocompletion and code hints '
