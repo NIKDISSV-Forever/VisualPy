@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pygments.lexers.python as py_lexers
 
-import VPython.highlights
-from VPython.interactive import VisualPython
+import vpy.highlights
+from vpy.interactive import VisualPython
 
 builtins.unichr = chr  # pypy msvcrt fix
 
@@ -15,7 +15,7 @@ ALL_LEXERS = py_lexers.__all__
 
 
 def cli_main():
-    arg_parser = argparse.ArgumentParser('VPython')
+    arg_parser = argparse.ArgumentParser('vpy')
 
     highlight_group = arg_parser.add_argument_group('Highlight', 'Highlight Options')
     highlight_group.add_argument('-dbg', '--darkbg', action='store_true', default=False,
@@ -33,12 +33,12 @@ def cli_main():
 
     args = arg_parser.parse_args()
 
-    VPython.highlights.FORMATTER.darkbg = args.darkbg
-    VPython.highlights.LEXER = getattr(py_lexers, args.lexer)()
-    VPython.highlights.TRACEBACK_LEXER = getattr(py_lexers, args.traceback_lexer)()
+    vpy.highlights.FORMATTER.darkbg = args.darkbg
+    vpy.highlights.LEXER = getattr(py_lexers, args.lexer)()
+    vpy.highlights.TRACEBACK_LEXER = getattr(py_lexers, args.traceback_lexer)()
 
     if args.cursor:
-        VPython.highlights.CURSOR = args.cursor
+        vpy.highlights.CURSOR = args.cursor
 
     builtins_dict = builtins.__dict__
     builtins_dict['__name__'] = '__name__'
