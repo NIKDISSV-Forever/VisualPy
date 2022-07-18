@@ -8,7 +8,7 @@ Works with both _CPython_ and _PyPy_.
 
 # Usage
 
-> python -m VPython
+> python -m vpy
 
 > General
 ![](https://github.com/NIKDISSV-Forever/VisualPython/raw/main/screenshots/main.png)
@@ -29,7 +29,7 @@ Works with both _CPython_ and _PyPy_.
 # Arguments
 
 ```
-usage: VPython [-h] [-dbg]
+usage: vpy [-h] [-dbg]
                [-lex {PythonLexer,PythonConsoleLexer,PythonTracebackLexer,Python2Lexer,Python2TracebackLexer,CythonLexer,DgLexer,NumPyLexer}]
                [-t-lex {PythonLexer,PythonConsoleLexer,PythonTracebackLexer,Python2Lexer,Python2TracebackLexer,CythonLexer,DgLexer,NumPyLexer}]
                [-cr CURSOR] [-i INTERACT_IT] [-q]

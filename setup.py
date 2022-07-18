@@ -7,7 +7,7 @@ with open('README.MD', encoding='UTF-8') as f:
 
 setuptools.setup(
     name='VisualPy',
-    version='1.0.0',
+    version='1.0.1',
 
     description='Cross-platform python interpreter with highlighting, autocompletion and code hints '
                 '(Like IPython and BPython)',
