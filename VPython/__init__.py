@@ -14,7 +14,7 @@ builtins.unichr = chr  # pypy msvcrt fix
 ALL_LEXERS = py_lexers.__all__
 
 
-def main():
+def cli_main():
     arg_parser = argparse.ArgumentParser('VPython')
 
     highlight_group = arg_parser.add_argument_group('Highlight', 'Highlight Options')
@@ -53,5 +53,3 @@ def main():
         else:
             interactive.runsource(source)
     interactive.interact('' if args.quiet else None)
-
-

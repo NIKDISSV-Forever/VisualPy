@@ -186,15 +186,13 @@ class Attrs(Tiper):
 @contextmanager
 def disable_stdout():
     _stdout = sys.stdout
-    try:
-        sys.stdout = open(os.devnull, 'w')
+    with open(os.devnull, 'w') as stdout:
+        sys.stdout = stdout
         yield
-    finally:
-        sys.stdout = _stdout
+    sys.stdout = _stdout
 
 
-def _ignore(_):
-    return
+def _ignore(_): return
 
 
 def _print_filtered(results: Iterable | None):
@@ -211,12 +209,14 @@ def _print_filtered(results: Iterable | None):
         return
     rich.print('\n'
                f'Display all {len(values)} possibilities? '
-               f'[i]start[:stop:step][/] |'
 
-               f' [yellow][b]S[/]horten[/]'
-               f'/[red][b]n[/]o[/]'
-               f'/[green][b]y[/]es[/]',
+               '[i]start[:stop:step][/] |'
+
+               ' [yellow][b]S[/]horten[/]'
+               '/[red][b]n[/]o[/]'
+               '/[green][b]y[/]es[/]',
                end=' ')
+
     choice = (input().strip().casefold() or 's')[0]
     if choice == 'y':
         print(f"\n{highlights.highlight(', '.join(values))}")

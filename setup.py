@@ -7,7 +7,7 @@ with open('README.MD', encoding='UTF-8') as f:
 
 setuptools.setup(
     name='VisualPy',
-    version='0.1.2',
+    version='0.1.3',
 
     description='Cross-platform python interpreter with highlighting, autocompletion and code hints '
                 '(Like IPython and BPython)',
@@ -16,6 +16,8 @@ setuptools.setup(
 
     author='NIKDISSV (Nikita)',
     author_email='nikdissv@proton.me',
+
+    url='https://github.com/NIKDISSV-Forever/VisualPy',
 
     packages=['VPython'],
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from __future__ import annotations
 
 import array
@@ -110,18 +111,19 @@ class VisualPython(code.InteractiveConsole):
             try:
                 line = self.raw_input(sys.ps2 if more else sys.ps1)
                 more = self.push(line)
-            except KeyboardInterrupt:
+            except KeyboardInterrupt as exc:
+                if exc.args:
+                    raise
                 self.write('\n')
-                self.runsource('raise KeyboardInterrupt from None', filename=self.filename)
-                self.resetbuffer()
-                more = 0
-            except EOFError as eof:
-                if eof.args:
+                self.runsource("raise KeyboardInterrupt from None", filename=self.filename)
+            except EOFError as exc:
+                if exc.args:
                     raise
                 self.write('\n')
                 self.runsource(
-                    f"raise EOFError({f'Exiting {self.__class__.__name__}...' if exitmsg is None else exitmsg!r})"
-                    " from None", filename=self.filename)
+                    "raise EOFError("
+                    f"{f'Exiting {self.__class__.__name__}...' if exitmsg is None else exitmsg!r}"
+                    ") from None", filename=self.filename)
                 break
 
     def runsource(self, source: str, filename: str = None, symbol: str = None) -> bool:
@@ -332,8 +334,8 @@ class VisualPython(code.InteractiveConsole):
                     if '\0' in part:
                         part_with_cursor = part
                         break
-        if len(parts) > 1 and len(prompt) > 1:
-            prompt = prompt[:-1] + '…'
+        if len(parts) > 1 and prompt:
+            prompt = f'{prompt[:-1]}\N{HORIZONTAL ELLIPSIS}'
         return prompt + VPython.highlights.highlight(part_with_cursor.ljust(tw)).replace('\0', cursor)
 
     def getch(self) -> str:
